@@ -1,6 +1,6 @@
 foaas:
   ratelimit:
-    implementation: bucket4j
-    algorithm: sliding_window
+    implementation: in_house
+    algorithm: fixed_window
     interval_in_seconds: 10
     quota: 5
