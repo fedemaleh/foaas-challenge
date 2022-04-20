@@ -21,6 +21,9 @@ As an example, the following cURL command can be used:
 ```bash
 curl "http://localhost:8080/message?client_id=1234" -i
 ```
+
+The result will be a random message from a list of resources picked from the FOAAS API. 
+
 ## Rate Limit Algorithm
 The challenge has 2 rate limit algorithm implemented:
 
@@ -53,4 +56,13 @@ For this implementation, only the InHouse Rate Limit has test coverage as it's t
 
 In a productive codebase, I would add test coverage to all the logic. Given that this codebase won't evolve, and it has a small amount of features, I thought it wasn't worth to have full coverage, given the time constraints for the challenge.
 
-For e2e testing, there are some test cases defined in the [test_cases](test_cases). They can be executed from the [test_cases](test_cases) by executing the `./all_tests.sh` command. **Disclaimer: the application must be running before executing the test cases.**
+For e2e testing, there are some test cases defined in the [test_cases](test_cases). They can be executed from the [test_cases](test_cases) by executing the `./all_tests.sh` command. **Disclaimer:** the application must be running before executing the test cases.
+
+## Deployment
+The challenge is deployed in Heroku using the InHouse Fixed Window strategy. The challenge can be accesses through the following cURL:
+
+```bash
+curl "https://foaas-challenge.herokuapp.com/message?client_id=1234" -i 
+```
+
+There is a [test_cases_heroku](test_cases_heroku) folder with the same test cases but pointing to the Heroku deployment. **Disclaimer:** the Heroku instance is turned off after some minutes without receiving any request, please ensure the instance is up before running the tests.
